@@ -21,7 +21,7 @@ In the same folder you have to clone two repositories:
 
 ### Backend
 ```
-git clone https://github.com/lollobeach/BlockchainProcessMining_backend.git
+git clone https://github.com/lollobeach/BlockchainDataExtraction.git
 ```
 
 In the root folder of `BlockchainProcessMining_backend` you have to add a `.env` file like this:
@@ -42,9 +42,6 @@ In this case the Alchemy provider has been used, but you are free to use whateve
 > To work with the Polygon blockchain you have to use [PolygonScan API](https://polygonscan.com/apis) instead of Etherscan
 
 ### Frontend
-```
-git clone https://github.com/lollobeach/BlockchainProcessMining_frontend.git
-```
 
 Then, in both projects run:
 ```

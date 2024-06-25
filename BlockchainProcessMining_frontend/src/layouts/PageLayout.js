@@ -15,6 +15,7 @@ import {darkTheme} from "@uiw/react-json-view/dark";
 import {Download, Delete} from "@mui/icons-material";
 import {_downloadCSV, _downloadJson} from "../api/services";
 import useDataContext from "../dataContext/useDataContext";
+import {Link} from "react-router-dom";
 
 const CardContentNoPadding = styled(CardContent)(
     `
@@ -94,25 +95,26 @@ function PageLayout({children, loading, setLoading}) {
                                 }
                             </CardContentNoPadding>
                         </Card>
-                        {
-                            (
-                                <Box display="flex" justifyContent="space-evenly" alignItems="center" gap={1}>
-                                    <Button disabled={!results} startIcon={<Download/>} onClick={downloadJson}
-                                            variant="contained" sx={{padding: 1, width: 120}}>
-                                        <Typography variant="h6">JSON</Typography>
-                                    </Button>
-                                    <Button disabled={!results} startIcon={<Download/>} onClick={downloadCSV}
-                                            variant="contained" sx={{
-                                        padding: 1,
-                                        width: 120,
-                                        backgroundColor: "#38a651",
-                                        '&:hover': {backgroundColor: "#2f6749"}
-                                    }}>
-                                        <Typography variant="h6">CSV</Typography>
-                                    </Button>
-                                </Box>
-                            )
-                        }
+                        <Box display="flex" justifyContent="space-evenly" alignItems="center" gap={1}>
+                            <Button disabled={!results} startIcon={<Download/>} onClick={downloadJson}
+                                    variant="contained" sx={{padding: 1, width: 120}}>
+                                <Typography variant="h6">JSON</Typography>
+                            </Button>
+                            <Link to="/query" style={{textDecoration: "none"}}>
+                                <Button variant="contained" sx={{padding: 1}}>
+                                    <Typography variant="h6">Query Page</Typography>
+                                </Button>
+                            </Link>
+                            <Button disabled={!results} startIcon={<Download/>} onClick={downloadCSV}
+                                    variant="contained" sx={{
+                                padding: 1,
+                                width: 120,
+                                backgroundColor: "#38a651",
+                                '&:hover': {backgroundColor: "#2f6749"}
+                            }}>
+                                <Typography variant="h6">CSV</Typography>
+                            </Button>
+                        </Box>
                     </Stack>
                 </Grid>
             </Grid>

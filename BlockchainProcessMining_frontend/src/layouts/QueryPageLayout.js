@@ -14,6 +14,7 @@ import JsonView from "@uiw/react-json-view";
 import { darkTheme } from "@uiw/react-json-view/dark";
 import { Download, Delete } from "@mui/icons-material";
 import { _downloadJson } from "../api/services";
+import {Link} from "react-router-dom";
 
 const CardContentNoPadding = styled(CardContent)(
     `
@@ -89,6 +90,11 @@ function QueryPageLayout({ children, loading, setLoading, results, setResults })
                             <Button disabled={!hasResults} startIcon={<Download />} onClick={downloadJson} variant="contained" sx={{ padding: 1, width: 120 }}>
                                 <Typography variant="h6">JSON</Typography>
                             </Button>
+                            <Link to="/" style={{textDecoration: "none"}}>
+                                <Button variant="contained" sx={{padding: 1}}>
+                                    <Typography variant="h6">Homepage</Typography>
+                                </Button>
+                            </Link>
                         </Box>
                     </Stack>
                 </Grid>
