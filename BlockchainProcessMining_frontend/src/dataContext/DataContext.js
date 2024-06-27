@@ -4,12 +4,6 @@ import JsonLog from "../mock/jsonLog.json"
 
 const initialState = {
     results: null,
-    ocel: {
-        eventTypes: [],
-        objectTypes: [],
-        events: [],
-        objects: []
-    }
 }
 
 const reducer = (state, action) => {
@@ -18,11 +12,6 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 results: action.payload
-            }
-        case 'SET_OCEL':
-            return {
-                ...state,
-                ocel: action.payload
             }
         default:
             return state
@@ -39,16 +28,10 @@ function DataProvider(props) {
         dispatch({type: 'SET_RESULTS', payload: results})
     }
 
-    const setOcel = (ocel) => {
-        dispatch({type: 'SET_OCEL', payload: ocel})
-    }
-
     const memorizedValue = useMemo(() => ({
         setResults,
-        setOcel,
         results: state.results,
-        ocel: state.ocel
-    }), [state.results, state.ocel, setResults, setOcel]);
+    }), [state.results, setResults]);
 
     return (
         <DataContext.Provider value={memorizedValue}>

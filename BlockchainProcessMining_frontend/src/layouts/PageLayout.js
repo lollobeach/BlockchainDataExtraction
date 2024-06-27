@@ -28,7 +28,7 @@ const CardContentNoPadding = styled(CardContent)(
 
 function PageLayout({children, loading, setLoading}) {
 
-    const {results, ocel, setResults} = useDataContext()
+    const {results, setResults} = useDataContext()
 
     const path = window.location.pathname
 

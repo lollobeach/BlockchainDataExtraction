@@ -17,8 +17,6 @@ ___
 
 ## How to run
 
-In the same folder you have to clone two repositories:
-
 ### Backend
 ```
 git clone https://github.com/lollobeach/BlockchainDataExtraction.git
