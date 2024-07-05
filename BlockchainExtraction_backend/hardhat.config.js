@@ -83,7 +83,7 @@ module.exports = {
                 }
             },
                 forking: {
-                    url: "https://eth-mainnet.g.alchemy.com/v2/ISHV03DLlGo2K1-dqE6EnsyrP2GF44Gt",
+                    url: process.env.WEB3_ALCHEMY_MAINNET_URL,
                     blockNumber: 12427648,
                     enabled: true
                 },
