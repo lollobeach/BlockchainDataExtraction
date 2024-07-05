@@ -1,7 +1,5 @@
 import React, {useMemo, useReducer} from 'react';
 
-import JsonLog from "../mock/jsonLog.json"
-
 const initialState = {
     results: null,
 }
@@ -24,14 +22,16 @@ function DataProvider(props) {
 
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    const setResults = (results) => {
-        dispatch({type: 'SET_RESULTS', payload: results})
-    }
+    const memorizedValue = useMemo(() => {
+        const setResults = function (results) {
+            dispatch({type: 'SET_RESULTS', payload: results})
+        }
 
-    const memorizedValue = useMemo(() => ({
-        setResults,
-        results: state.results,
-    }), [state.results, setResults]);
+        return {
+            setResults,
+            results: state.results,
+        }
+    }, [state.results]);
 
     return (
         <DataContext.Provider value={memorizedValue}>
