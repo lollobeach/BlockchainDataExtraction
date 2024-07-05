@@ -11,7 +11,6 @@ let contractTransactions = [];
 //const contractAddress = '0xc9EEf4c46ABcb11002c9bB8A47445C96CDBcAffb';
 //const cotractAddressAdidas = 0x28472a58A490c5e09A238847F66A68a47cC76f0f
 const hre = require("hardhat");
-const helpers = require("@nomicfoundation/hardhat-toolbox/network-helpers");
 const {saveTransaction, saveExtractionLog} = require("../databaseStore");
 const {getRemoteVersion, detectVersion} = require("./solcVersionManager");
 const {searchTransaction} = require("../query/query")
@@ -19,7 +18,7 @@ const {connectDB} = require("../config/db");
 const mongoose = require("mongoose");
 require('dotenv').config();
 
-let networkInUse = ""
+let networkName = ""
 let web3 = null
 let web3Endpoint = ""
 let apiKey = ""
@@ -40,7 +39,7 @@ const csvColumns = ["txHash", "debugTime", "decodeTime", "totalTime"]
 async function getAllTransactions(mainContract, contractAddress, fromBlock, toBlock, network, filters, smartContract) {
 
     _contractAddress = contractAddress
-    networkInUse = network;
+    networkName = network;
     switch (network) {
         case "Mainnet":
             web3Endpoint = process.env.WEB3_ALCHEMY_MAINNET_URL
@@ -57,8 +56,8 @@ async function getAllTransactions(mainContract, contractAddress, fromBlock, toBl
             apiKey = process.env.API_KEY_POLYGONSCAN
             endpoint = process.env.POLYGONSCAN_MAINNET_ENDPOINT
             break
-        case "Mumbai":
-            web3Endpoint = process.env.WEB3_ALCHEMY_POLYGON_MUMBAI_URL
+        case "Amoy":
+            web3Endpoint = process.env.WEB3_ALCHEMY_AMOY_URL
             apiKey = process.env.API_KEY_POLYGONSCAN
             endpoint = process.env.POLYGONSCAN_TESTNET_ENDPOINT
             break
@@ -148,7 +147,7 @@ function applyFilters(contractTransactions, filters) {
 }
 
 async function debugTransaction(txHash, blockNumber) {
-    await helpers.reset(web3Endpoint, Number(blockNumber));
+    await hre.changeNetwork(networkName, blockNumber)
     const start = new Date()
     const response = await hre.network.provider.send("debug_traceTransaction", [
         txHash
@@ -165,7 +164,7 @@ async function getStorageData(contractTransactions, contracts, mainContract, con
     let partialInt = 0;
 
     const userLog = {
-        networkUsed: networkInUse,
+        networkUsed: networkName,
         contractAddress,
         contractName: mainContract,
         fromBlock,
@@ -191,7 +190,7 @@ async function getStorageData(contractTransactions, contracts, mainContract, con
     //     fs.writeFileSync('csvLogs.csv', output)
     // })
 
-    await connectDB(networkInUse)
+    await connectDB(networkName)
     for (const tx of transactionsFiltered) {
         let query = {
             txHash: tx.hash.toLowerCase(),

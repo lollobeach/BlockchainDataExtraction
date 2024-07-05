@@ -104,7 +104,7 @@ function Query() {
 
     const [network, setNetwork] = useState("Mainnet")
 
-    const networks = ["Mainnet", "Sepolia", "Polygon", "Mumbai"]
+    const networks = ["Mainnet", "Sepolia", "Polygon", "Amoy"]
 
     useEffect(() => {
         switch (network) {
@@ -114,7 +114,7 @@ function Query() {
                 break
             case "Polygon":
                 break
-            case "Mumbai":
+            case "Amoy":
                 break
             default:
                 console.log("Change Network")

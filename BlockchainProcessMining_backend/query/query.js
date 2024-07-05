@@ -60,12 +60,4 @@ function getModelByContractAddress(contractAddress) {
     return mongoose.model(contractAddress, transactionSchema, contractAddress);
 }
 
-//cambiato nome alle collections
-//query su più collection
-//bug fix delle query dei campi annidati
-//gestione dell'estrazione nel caso di txHash già presenti del database
-//creare un db per ogni network
-//generalizzare metodo estrazione query
-//tradurre tutto in inglese
-
 module.exports = {getModelByContractAddress, searchTransaction};

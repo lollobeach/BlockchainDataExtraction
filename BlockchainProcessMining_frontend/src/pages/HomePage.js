@@ -83,7 +83,7 @@ function HomePage() {
         }
     }
 
-    const networks = ["Mainnet", "Sepolia", "Polygon", "Mumbai"]
+    const networks = ["Mainnet", "Sepolia", "Polygon", "Amoy"]
 
     useEffect(() => {
         switch (network) {
@@ -105,11 +105,11 @@ function HomePage() {
                 setFromBlock("")
                 setToBlock("")
                 break
-            case "Mumbai":
-                setContractName("EmergencyResponsePlan")
-                setContractAddress("0x381942ED223ca793D32b7ccF3499e94766A9FBA4")
-                setFromBlock("47081256")
-                setToBlock("47081375")
+            case "Amoy":
+                setContractName("")
+                setContractAddress("")
+                setFromBlock("")
+                setToBlock("")
                 break
             default:
                 console.log("Change Network")
