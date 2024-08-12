@@ -369,12 +369,16 @@ function HomePage() {
                             <Box display="flex" justifyContent="space-between" gap={1}>
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DemoContainer components={['DateTimePicker']}>
-                                        <DateTimePicker value={timestamp[0]} onChange={(newValue) => setTimestamp([newValue, timestamp[1]])} label="Start" disabled={!filterTimestamp}/>
+                                        <DateTimePicker value={timestamp[0]}
+                                                        onChange={(newValue) => setTimestamp([newValue, timestamp[1]])}
+                                                        label="Start" disabled={!filterTimestamp}/>
                                     </DemoContainer>
                                 </LocalizationProvider>
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DemoContainer components={['DateTimePicker']}>
-                                        <DateTimePicker value={timestamp[1]} onChange={(newValue) => setTimestamp([timestamp[0], newValue])} label="End" disabled={!filterTimestamp}/>
+                                        <DateTimePicker value={timestamp[1]}
+                                                        onChange={(newValue) => setTimestamp([timestamp[0], newValue])}
+                                                        label="End" disabled={!filterTimestamp}/>
                                     </DemoContainer>
                                 </LocalizationProvider>
                             </Box>
@@ -436,7 +440,7 @@ function HomePage() {
                         </Select>
                     </FormControl>
                 </Box>
-                <Stack justifyContent="space-evenly" height="100%">
+                <Stack justifyContent="space-between" height="calc(100% - 59px)">
                     <Box display="flex" justifyContent="space-between" gap={5}>
                         <Box width="100%">
                             <Typography textAlign="center" variant="h3">
@@ -481,6 +485,7 @@ function HomePage() {
                             <Button fullWidth component="label" startIcon={<FileUpload/>} variant="contained"
                                     disabled={loading}
                                     sx={{
+                                        width: "430px",
                                         backgroundColor: "#86469C",
                                         '&:hover': {backgroundColor: "#512960"}
                                     }}
@@ -490,6 +495,7 @@ function HomePage() {
                             </Button>
                             <Button fullWidth variant="contained" disabled={loading} onClick={sendData}
                                     sx={{
+                                        width: "430px",
                                         padding: 1,
                                         height: "40px",
                                         backgroundColor: "#66cdaa",
@@ -504,6 +510,17 @@ function HomePage() {
                                         </>
                                     }
                                 </Box>
+                            </Button>
+                        </Box>
+                        <Box display="flex" justifyContent="center">
+                            <Button href="/query" variant="contained" sx={{
+                                width: "430px",
+                                height: "40px",
+                                padding: 1,
+                                backgroundColor: "#f1a706",
+                                '&:hover': {backgroundColor: "#bd850c"}
+                            }}>
+                                Query Page
                             </Button>
                         </Box>
                     </Stack>

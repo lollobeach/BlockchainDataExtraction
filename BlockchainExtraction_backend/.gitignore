@@ -12,3 +12,4 @@ temporaryTrials/*.json
 *.csv
 .idea/
 *.ts
+sourceCode.txt

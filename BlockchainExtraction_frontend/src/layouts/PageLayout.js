@@ -15,7 +15,6 @@ import {darkTheme} from "@uiw/react-json-view/dark";
 import {Download, Delete} from "@mui/icons-material";
 import {_downloadCSV, _downloadJson} from "../api/services";
 import useDataContext from "../dataContext/useDataContext";
-import {Link} from "react-router-dom";
 
 const CardContentNoPadding = styled(CardContent)(
     `
@@ -100,11 +99,6 @@ function PageLayout({children, loading, setLoading}) {
                                     variant="contained" sx={{padding: 1, width: 120}}>
                                 <Typography variant="h6">JSON</Typography>
                             </Button>
-                            <Link to="/query" style={{textDecoration: "none"}}>
-                                <Button variant="contained" sx={{padding: 1}}>
-                                    <Typography variant="h6">Query Page</Typography>
-                                </Button>
-                            </Link>
                             <Button disabled={!results} startIcon={<Download/>} onClick={downloadCSV}
                                     variant="contained" sx={{
                                 padding: 1,
